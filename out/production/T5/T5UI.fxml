@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="638.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="638.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Controller">
   <children>
     <ScrollPane layoutX="0.0" layoutY="0.0" pannable="false" prefHeight="400.0" prefWidth="600.0">
       <content>
@@ -15,11 +15,12 @@
             <TextField layoutX="14.0" layoutY="14.0" prefWidth="522.0" />
             <TextField layoutX="14.0" layoutY="40.0" prefWidth="522.0" />
             <TextField layoutX="14.0" layoutY="66.0" prefWidth="522.0" />
+            <Label fx:id="label1" layoutX="416.0" layoutY="182.0" text="1" />
           </children>
         </AnchorPane>
       </content>
     </ScrollPane>
-    <Button layoutX="600.0" layoutY="14.0" minWidth="24.0" mnemonicParsing="false" prefWidth="38.0" text="R" />
-    <Button layoutX="598.0" layoutY="53.0" minWidth="24.0" mnemonicParsing="false" prefWidth="38.0" text="I" />
+    <Button fx:id="button_r" layoutX="600.0" layoutY="14.0" minWidth="24.0" mnemonicParsing="false" prefWidth="38.0" text="R" />
+    <Button id="button_I" fx:id="button_i" layoutX="598.0" layoutY="53.0" minWidth="24.0" mnemonicParsing="false" onAction="#button_i_action" prefWidth="38.0" text="I" />
   </children>
 </AnchorPane>

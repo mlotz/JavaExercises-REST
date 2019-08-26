@@ -24,5 +24,6 @@
         <jarDirectory url="file://D:/Libs/java/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org.openjfx:javafx-controls:13-ea+13" level="project" />
   </component>
 </module>
