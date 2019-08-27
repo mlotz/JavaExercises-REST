@@ -5,10 +5,12 @@ import javafx.fxml.FXMLLoader;
 
 //import javafx.fxml.JavaFXBuilderFactory;
 //import javafx.util.JavaFXBuilderFactory;
+import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.util.BuilderFactory;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -25,69 +27,77 @@ import java.util.logging.Logger;
 
 public class Test extends Application {
     private static Stage stage;
+    private static FXMLLoader loader;
+    private static Controller sceneController;
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("T5UI.fxml"));
+    public void start(Stage primarystage) throws Exception {
+        stage = primarystage;
 
-        Scene scene = new Scene(root);
-
-        stage.setTitle("T5 - Exercises: REST API, JAVA FX");
-        stage.setScene(scene);
+        gotoMain();
         stage.show();
         System.out.println("asd");
 
 
     }
 
-    private void gotoLogin() {
+    private void gotoMain() {
         try {
-            replaceSceneContent("login.fxml");
+            replaceSceneContent("T5UI.fxml");
         } catch (Exception ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public static Parent replaceSceneContent(String fxml) throws Exception {
-        Parent page = (Parent) FXMLLoader.load(Test.class.getResource(fxml), null);
+        loader = new FXMLLoader(Test.class.getResource("T5UI.fxml"));
+        Parent root = loader.load(Test.class.getResource("T5UI.fxml"), null);
+        sceneController = loader.getController();
+
         Scene scene = stage.getScene();
         if (scene == null) {
-            scene = new Scene(page, 700, 450);
+            scene = new Scene(root);
             //scene.getStylesheets().add(Test.class.getResource("demo.css").toExternalForm());
             stage.setScene(scene);
         } else {
-            stage.getScene().setRoot(page);
+            stage.getScene().setRoot(root);
         }
         stage.sizeToScene();
-        return page;
+        return root;
     }
 
+
+
     public static void main(String[] args) {
-        String siteURL = "https://jsonplaceholder.typicode.com/todos";
-        FileOutputStream out = null;
-        TodosRest tr = new TodosRest();
+//        String siteURL = "https://jsonplaceholder.typicode.com/todos";
+//        FileOutputStream out = null;
+//        TodosRest tr = new TodosRest();
+//
+//
+//        ArrayList<TodosRest.todo> todos = tr.getTodos(siteURL);
+//        Iterator<TodosRest.todo> iter = todos.iterator();
+//        try{
+//            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+//            String s = "";
+//            while (iter.hasNext()) {
+//                s = iter.next().gettitle();
+//                writer.write(s + " ");
+//                //System.out.println(iter.next().title+" ");
+//                //sceneController.setFirstTextField("asdasd");
+//            }
+//            writer.close();
+//        }
+//        catch (Exception e){
+//            System.out.println(e);
+//        }
 
 
-        ArrayList<TodosRest.todo> todos = tr.getTodos(siteURL);
-        Iterator<TodosRest.todo> iter = todos.iterator();
-        try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-            while (iter.hasNext()) {
-                writer.write(iter.next().gettitle() + " ");
-                //System.out.println(iter.next().title+" ");
-            }
-            writer.close();
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
+        System.out.println("Lanuching app");
 
         launch(args);
 
-        try {
-            replaceSceneContent("a.fxml");
-        }
-        catch(Exception e){}
+
+
 
 
 
